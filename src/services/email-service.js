@@ -19,21 +19,21 @@ const sendBasicEmail = async (mailFrom, mailTo, mailSubject, mailBody) => {
 
 const fetchPendingEmails = async (timestamp) => {
     try {
-        const response = await repo.getAll({status: "PENDING"});
+        const response = await repo.get({status: "PENDING"});
         return response;
     } catch (error) {
         console.log(error);
     }
 }
 
-// const updateTicket = async (ticketId, data) => {
-//     try {
-//         const response = await repo.update(ticketId, data);
-//         return response;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+const updateTicket = async (ticketId, data) => {
+    try {
+        const response = await repo.update(ticketId, data);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 const createNotification = async (data) => {
@@ -65,8 +65,8 @@ const createNotification = async (data) => {
 module.exports = {
     sendBasicEmail,
     fetchPendingEmails,
-    // createNotification,
-    // updateTicket,
+    createNotification,
+    updateTicket,
     // subscribeEvents
 }
 
