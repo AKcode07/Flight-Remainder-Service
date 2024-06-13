@@ -1,5 +1,5 @@
-// const sender = require('../config/emailConfig');
-const TicketRepository = require('../repository/ticket-repository');
+const sender = require('../config/emailConfig');
+const TicketRepository = require('../repository/ticket-repository.js');
 
 const repo = new TicketRepository();
 
@@ -19,7 +19,7 @@ const sendBasicEmail = async (mailFrom, mailTo, mailSubject, mailBody) => {
 
 const fetchPendingEmails = async (timestamp) => {
     try {
-        const response = await repo.get({status: "PENDING"});
+        const response = await repo.getAll({status: "PENDING"});
         return response;
     } catch (error) {
         console.log(error);
@@ -36,15 +36,15 @@ const fetchPendingEmails = async (timestamp) => {
 // }
 
 
-// const createNotification = async (data) => {
-//     try {
-//         console.log(data);
-//         const response = await repo.create(data);
-//         return response;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+const createNotification = async (data) => {
+    try {
+        // console.log(data);
+        const response = await repo.create(data);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 // const subscribeEvents = async (payload) => {
 //     let service = payload.service;

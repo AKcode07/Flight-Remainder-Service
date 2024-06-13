@@ -1,4 +1,4 @@
-const { NotificationTicket } = require('../models/index');
+const { NotificationTicket } = require('../models/index.js');
 const { Op } = require("sequelize");
 
 class TicketRepository {
@@ -12,14 +12,14 @@ class TicketRepository {
       }
   }
 
-  // async create(data) {
-  //     try {
-  //         const ticket = await NotificationTicket.create(data);
-  //         return ticket;
-  //     } catch (error) {
-  //         throw error;
-  //     }
-  // }
+  async create(data) {
+      try {
+          const ticket = await NotificationTicket.create(data);
+          return ticket;
+      } catch (error) {
+          throw error;
+      }
+  }
 
   // async get(filter) {
   //     try {
